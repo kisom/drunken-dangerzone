@@ -1,0 +1,8 @@
+:DRUNKEN-DANGERZONE
+This is a simple in-memory key value store with a REST API interface. It
+was written to learn the CLOS better and to play with web development in
+Common Lisp. Haters are welcome.
+
+LICENSE:
+
+DRUNKEN-DANGERZONE is released under the ISC license.
