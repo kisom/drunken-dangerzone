@@ -1,4 +1,6 @@
 ;;;; drunken-dangerzone.lisp
+;;; simple in-memory key-value server with a REST API.
+;;; written by Kyle Isom <coder@kyleisom.net>
 (ql:quickload :restas)
 (ql:quickload :st-json)
 (ql:quickload :cl-who)
@@ -23,11 +25,6 @@
 (defmacro write-json-fields (&body body)
   `(st-json:write-json-to-string
     (st-json:jso ,@body)))
-
-(defmacro response-dispatch (result err-msg ok-msg)
-  `(if ,result
-       (error-response ,err-msg)
-       (status-response ,ok-msg)))
 
 (defun error-response (err-msg)
   (write-json-fields "error" err-msg
@@ -103,8 +100,8 @@
         (:p "Supported endpoints:"
             (:ul
              (:li "GET /key     - retrieve a list of all keys stored in the server")
-             (:li "PUT /key     - json-encode a list of keys and their values,"
-                  "and they will be stored as long as they aren't already"
+             (:li "PUT /key     - json-encode a list of keys and their values, "
+                  "and they will be stored as long as they aren't already "
                   "present")
              (:li "POST /key    - similar to PUT, but will overwrite any"
                   "existing values.")
