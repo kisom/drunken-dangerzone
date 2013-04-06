@@ -2,7 +2,6 @@
 (ql:quickload :restas)
 (ql:quickload :st-json)
 (ql:quickload :cl-who)
-(ql:quickload :getopt)
 
 (defvar *port* 8080)
 
