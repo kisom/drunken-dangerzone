@@ -21,6 +21,7 @@
 
 (defparameter *opts* '(("p" :required)))
 (defvar *keystore* (make-hash-table :test #'equal))
+(setf (who:html-mode) :html5)
 
 (defmacro write-json-fields (&body body)
   `(st-json:write-json-to-string
@@ -88,7 +89,7 @@
     (st-json:write-json-to-string (apply #'st-json:jso store))))
 
 (restas:define-route index ("/" :method :get)
-  (who:with-html-output-to-string (out)
+  (who:with-html-output-to-string (out nil :prologue t :indent t)
       (:html
        (:head
         (:title "drunken-dangerzone")
