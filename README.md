@@ -1,7 +1,9 @@
 ## :DRUNKEN-DANGERZONE
 This is a simple in-memory key value store with a REST API interface. It
 was written to learn play with web development in Common Lisp. Haters are
-welcome. There is a [Go analogue](https://github.com/gokyle/drunken_dangerzone).
+welcome. There is a [Go analogue](https://github.com/gokyle/drunken_dangerzone),
+and a [Clojure analogue](https://github.com/kisom/clj-drunken-dangerzone)
+as well.
 
 ### DRUNKEN-DANGERZONE? WHAT KIND OF NAME IS THAT?
 It was recommended by the Github project name generator.
