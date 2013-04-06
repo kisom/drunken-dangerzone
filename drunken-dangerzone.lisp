@@ -83,6 +83,13 @@
     (write-json-fields "success" :true
                        "set" keys-set)))
 
+(restas:define-route dump ("/keystore.json" :method :get)
+  (let ((store '()))
+    (maphash (lambda (k v) (progn (push v store)
+                                  (push k store)))
+             *keystore*)
+    (st-json:write-json-to-string (apply #'st-json:jso store))))
+
 (restas:define-route index ("/" :method :get)
   (who:with-html-output-to-string (out)
       (:html
@@ -101,11 +108,5 @@
                   "present")
              (:li "POST /key    - similar to PUT, but will overwrite any"
                   "existing values.")
-             (:li "GET /key/:id - retrieve the value associated with the id.")))))))
-
-(defmacro get-int (s)
-  `(if (stringp ,s)
-      (multiple-value-bind (n len) (parse-integer ,s :junk-allowed t)
-        (declare (ignore len))
-        n))
-  nil)
+             (:li "GET /key/:id - retrieve the value associated with the id.")
+             (:li "GET /keystore.json - retrieve the full keystore as json.")))))))
