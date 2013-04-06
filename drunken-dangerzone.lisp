@@ -21,7 +21,7 @@
 
 (defparameter *opts* '(("p" :required)))
 (defvar *keystore* (make-hash-table :test #'equal))
-(setf (who:html-mode) :html5)
+(setf (who:html-mode) :HTML5)
 
 (defmacro write-json-fields (&body body)
   `(st-json:write-json-to-string
@@ -98,13 +98,13 @@
        (:body
         (:h1 "drunken-dangerzone!")
         (:p "This is a simple in-memory key-value store powered by Common Lisp.")
-        (:p "Supported endpoints:"
-            (:ul
-             (:li "GET /key     - retrieve a list of all keys stored in the server")
-             (:li "PUT /key     - json-encode a list of keys and their values, "
-                  "and they will be stored as long as they aren't already "
-                  "present")
-             (:li "POST /key    - similar to PUT, but will overwrite any"
-                  "existing values.")
-             (:li "GET /key/:id - retrieve the value associated with the id.")
-             (:li "GET /keystore.json - retrieve the full keystore as json.")))))))
+        (:p "Supported endpoints:")
+        (:ul
+         (:li "GET /key     - retrieve a list of all keys stored in the server")
+         (:li "PUT /key     - json-encode a list of keys and their values, "
+              "and they will be stored as long as they aren't already "
+              "present")
+         (:li "POST /key    - similar to PUT, but will overwrite any"
+              "existing values.")
+         (:li "GET /key/:id - retrieve the value associated with the id.")
+         (:li "GET /keystore.json - retrieve the full keystore as json."))))))
