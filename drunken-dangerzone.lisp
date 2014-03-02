@@ -27,13 +27,6 @@
   `(st-json:write-json-to-string
     (st-json:jso ,@body)))
 
-(defun error-response (err-msg)
-  (write-json-fields "error" err-msg
-                     "success" :false))
-
-(defun success-response (msg)
-  (write-json-fields "message" msg
-                     "success" :true))
 
 (restas:define-route keylist ("/key" :method :get)
   (st-json:write-json-to-string
